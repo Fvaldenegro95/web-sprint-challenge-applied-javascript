@@ -18,20 +18,14 @@ const Tabs = (topics) => {
   const topicDiv = document.createElement('div');
   topicDiv.classList.add('topics')
 
-  const tab1 = document.createElement('div');
-    topicDiv.appendChild(tab1)
-      tab1.classList.add('tab')
-        tab1.textContent = topics[0]
 
-  const tab2 = document.createElement('div');
-    topicDiv.appendChild(tab2)
-      tab2.classList.add('tab')
-        tab2.textContent = topics[2]
 
-  const tab3 = document.createElement('div');
-    topicDiv.appendChild(tab3)
-      tab3.classList.add('tab')
-        tab3.textContent = topics[1]
+  topics.forEach(topic => {
+    let random = document.createElement('div');
+    random.classList.add('tab')
+    random.textContent = topic;
+    topicDiv.appendChild(random)
+  })
 
 
 
@@ -48,17 +42,16 @@ const tabsAppender = (selector) => {
   //
 
 
-axios.get(`http://localhost:5000/api/topics`)
-.then(response => {
-  const tabs = response.data.topics;
-  console.log(tabs);
+let response = axios.get(`http://localhost:5000/api/topics`)
 
-  const tabsTwo = document.querySelector(selector);
-  tabsTwo.appendChild(Tabs(tabs));
+response.then(value => {
+
+  let tabs = document.querySelector(selector);
+  let topicsTwo = value.data.topics;
+  let tabsTwo = Tabs(topicsTwo);
+  tabs.appendChild(tabsTwo);
 });
-
-
-
 }
+
 
 export { Tabs, tabsAppender }
