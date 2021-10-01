@@ -51,7 +51,7 @@ response.then(value => {
   tabSelector.appendChild(insideTab);
 
 
-});
+}).catch (function (error) {console.log(error)});
 }
 
 
