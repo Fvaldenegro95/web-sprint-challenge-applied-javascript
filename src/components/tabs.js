@@ -21,10 +21,10 @@ const Tabs = (topics) => {
 
 
   topics.forEach(topic => {
-    let random = document.createElement('div');
-    random.classList.add('tab')
-    random.textContent = topic;
-    topicDiv.appendChild(random)
+    let newDiv = document.createElement('div');
+    newDiv.classList.add('tab')
+    newDiv.textContent = topic;
+    topicDiv.appendChild(newDiv)
   })
 
 
@@ -45,11 +45,12 @@ const tabsAppender = (selector) => {
 let response = axios.get(`http://localhost:5000/api/topics`)
 
 response.then(value => {
+  let tabSelector = document.querySelector(selector);
+  let topicsValue = value.data.topics;
+  let tabTwo = Tabs(topicsValue);
+  tabSelector.appendChild(tabTwo);
 
-  let tabs = document.querySelector(selector);
-  let topicsTwo = value.data.topics;
-  let tabsTwo = Tabs(topicsTwo);
-  tabs.appendChild(tabsTwo);
+
 });
 }
 

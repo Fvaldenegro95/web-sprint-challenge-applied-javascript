@@ -21,30 +21,30 @@ const Card = (article) => {
   //
 
 const card = document.createElement('div');
-const headline = document.createElement('div');
-const author = document.createElement('div');
+const DivHeadline = document.createElement('div');
+const DivAuthor = document.createElement('div');
 const imageContainer = document.createElement('div');
 const authorPhoto = document.createElement('img');
 const authorName = document.createElement('span');
 
 
-card.appendChild(headline);
-card.appendChild(author);
-author.appendChild(imageContainer);
-author.appendChild(authorName);
+card.appendChild(DivHeadline);
+card.appendChild(DivAuthor);
+DivAuthor.appendChild(imageContainer);
+DivAuthor.appendChild(authorName);
 imageContainer.appendChild(authorPhoto);
 
 
 card.classList.add('card');
-headline.classList.add('headline');
-author.classList.add('author');
+DivHeadline.classList.add('headline');
+DivAuthor.classList.add('author');
 imageContainer.classList.add('img-container');
 
 
 
-headline.textContent = article['headline'];
+DivHeadline.textContent = article['headline'];
 authorPhoto.src = article['authorPhoto'];
-authorName.textContent = article['authorName'];
+authorName.textContent = `by ${article['authorName']}`;
 
 
 
@@ -76,8 +76,8 @@ response.then(response => {
 
   let list = response.data.articles;
 
-  for(let key in list) {
-    list[key].forEach(element => {
+  for(let data in list) {
+    list[data].forEach(element => {
       let card1 = Card(element);
       let cards = document.querySelector(selector);
       cards.appendChild(card1);
