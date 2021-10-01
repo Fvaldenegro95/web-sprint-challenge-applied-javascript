@@ -47,8 +47,8 @@ let response = axios.get(`http://localhost:5000/api/topics`)
 response.then(value => {
   let tabSelector = document.querySelector(selector);
   let topicsValue = value.data.topics;
-  let tabTwo = Tabs(topicsValue);
-  tabSelector.appendChild(tabTwo);
+  let insideTab = Tabs(topicsValue);
+  tabSelector.appendChild(insideTab);
 
 
 });
