@@ -83,7 +83,7 @@ response.then(response => {
       cards.appendChild(card1);
     });
   }
-});
+}).catch (function (error) {console.log(error)})git 
 }
 
 
